@@ -2,7 +2,7 @@ import { useState } from "react";
 // import { useState } from "react";
 
 const Home = () => {
-  // Click Events
+  // Click Events in React
   // Eg 1
   const handleClick = (e) => {
     console.log("hello ninjas", e);
