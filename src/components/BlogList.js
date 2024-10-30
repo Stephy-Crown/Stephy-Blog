@@ -1,6 +1,6 @@
 import React from "react";
-
-export const BlogList = ({ blogs, title, handleDelete }) => {
+// handleDelete
+export const BlogList = ({ blogs, title }) => {
   return (
     <div>
       {" "}
@@ -9,13 +9,13 @@ export const BlogList = ({ blogs, title, handleDelete }) => {
         <div className="blog-preview" key={blog.id}>
           <h2>{blog.title}</h2>
           <p>Written by {blog.author}</p>
-          <button
+          {/* <button
             onClick={() => {
               handleDelete(blog.id);
             }}
           >
             Delete
-          </button>
+          </button> */}
         </div>
       ))}
     </div>
