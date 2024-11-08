@@ -49,6 +49,7 @@
 //           <option value="steph">steph</option>
 //           <option value="crown">crown</option>
 //         </select>
+
 //         {!isLoading && <button>Add Blog</button>}
 //         {isLoading && <button disabled>Adding Blog...</button>}
 
@@ -61,9 +62,6 @@
 
 // export default Create;
 
-
-
-
 import axios from "axios";
 import { useState } from "react";
 
@@ -73,35 +71,31 @@ const Create = () => {
   const [author, setAuthor] = useState("steph");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // Handle form submit
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
     const blog = { title, body, author };
 
-    setIsLoading(true);
+    setIsLoading(true); // Set loading to true to disable button and show "Adding Blog..."
 
-    // Use the environment variable for the URL
-    const jsonstoreUrl = process.env.REACT_APP_JSONSTORE_URL;
+    try {
+      // Send POST request
+      const response = await axios.post(
+        "https://tar-majestic-gravity.glitch.me/blogs",
+        blog
+      );
+      console.log("Blog added:", response.data);
 
-    // Add X-Master-Key in the headers
-    axios
-      .post(jsonstoreUrl, blog, {
-        headers: {
-          "X-Master-Key": process.env.REACT_APP_JSONSTORE_API_KEY, // Ensure this is set in .env file
-        },
-      })
-      .then((response) => {
-        console.log("Blog added:", response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error adding the blog!", error);
-      })
-      .finally(() => {
-        // Clear the form after submission
-        setTitle("");
-        setBody("");
-        setAuthor("steph");
-        setIsLoading(false);
-      });
+      // Clear form fields after successful submission
+      setTitle("");
+      setBody("");
+      setAuthor("steph");
+    } catch (error) {
+      console.error("There was an error adding the blog!", error);
+    } finally {
+      setIsLoading(false); // Reset the loading state after success or error
+    }
   };
 
   return (
@@ -126,8 +120,11 @@ const Create = () => {
           <option value="steph">steph</option>
           <option value="crown">crown</option>
         </select>
-        {!isLoading && <button>Add Blog</button>}
-        {isLoading && <button disabled>Adding Blog...</button>}
+
+        {/* Show the button with dynamic text depending on loading state */}
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Adding Blog..." : "Add Blog"}
+        </button>
       </form>
     </div>
   );
