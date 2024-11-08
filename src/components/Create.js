@@ -121,6 +121,8 @@ const Create = () => {
           <option value="crown">crown</option>
         </select>
 
+        {/* {!isLoading && <button>Add Blog</button>}
+        {isLoading && <button disabled>Adding Blog...</button>} */}
         {/* Show the button with dynamic text depending on loading state */}
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Adding Blog..." : "Add Blog"}
