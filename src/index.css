@@ -45,7 +45,7 @@
 }
 .blog-preview h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #f1356d !important;
   margin-bottom: 8px;
 }
 .blog-preview a {
@@ -102,4 +102,241 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* Home.css */
+.home {
+  padding: 20px;
+}
+
+.welcome-message {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.welcome-message h1 {
+  font-size: 2rem;
+  color: #4c51bf; /* Indigo color */
+  font-weight: bold;
+}
+
+.welcome-message p {
+  font-size: 1.2rem;
+  color: #4a5568; /* Dark gray */
+  margin-top: 10px;
+}
+
+.create-blog-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background-color: #4c51bf; /* Indigo color */
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-blog-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background-color: #4c51bf; /* Indigo color */
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.create-btn {
+  display: flex;
+  justify-content: center; /* Centers the button horizontally */
+  align-items: center; /* Centers the button vertically (if you want) */
+  /* height: 100vh; Optional: ensures the container takes up the full height of the screen */
+}
+
+.create-blog-btn:active {
+  background-color: #2c3780; /* Even darker when clicked */
+}
+
+/* Container for the entire home page */
+/* .home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f4f4f4;
+} */
+
+/* Welcome message */
+.welcome-message {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.welcome-message h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.welcome-message p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Create New Blog button */
+.create-blog-btn {
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 30px;
+  background-color: #007bff;
+  color: white;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.create-blog-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+/* Centered View Blogs Button */
+.view-blogs-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f4f4f4;
+}
+
+.view-blogs-btn {
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 30px;
+  background-color: #28a745;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.view-blogs-btn:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+}
+
+/* Blog List container */
+/* .blog-list-container {
+  margin-top: 30px;
+  width: 80%;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} */
+
+/* Message when no blogs are available */
+.no-blogs-message {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+}
+
+/* Additional Blog List item styling (in BlogList component) */
+/* .blog-preview {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} */
+
+.blog-preview h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.blog-preview p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.blog-preview a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-preview a:hover {
+  text-decoration: underline;
+}
+
+/* Center the title */
+.blog-list-title {
+  /* text-align: center; Center horizontally */
+  font-size: 24px; /* Adjust the font size */
+  font-weight: bold; /* Make the title bold */
+  margin-top: 20px;
+  margin-bottom: 20px; /* Add some space below the title */
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f1f1f1;
+  font-size: 14px;
+  color: #333;
+}
+
+.footer-text a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+.blogs-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.blogs-heading h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.blog-list-container {
+  margin-top: 20px;
+}
+
+.loading-message,
+.no-blogs-message {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.view-all-blogs-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.view-all-blogs-btn:hover {
+  background-color: #0056b3;
 }

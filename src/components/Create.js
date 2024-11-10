@@ -1,100 +1,80 @@
-// import axios from "axios";
-// import { useState } from "react";
-
-// const Create = () => {
-//   const [title, setTitle] = useState("");
-//   const [body, setBody] = useState("");
-//   const [author, setAuthor] = useState("steph");
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const blog = { title, body, author };
-
-//     setIsLoading(true);
-//     axios
-//       .post("https://tar-majestic-gravity.glitch.me/blogs", blog)
-//       .then((response) => {
-//         console.log("Blog added:", response.data);
-//       })
-//       .catch((error) => {
-//         console.error("There was an error adding the blog!", error);
-//       });
-//     // Clear the inputs after a successful post
-//     setTitle("");
-//     setBody("");
-//     setAuthor("steph");
-//     setIsLoading(false);
-//   };
-
-//   return (
-//     <div className="create">
-//       <h2>Add a New Blog</h2>
-//       <form onSubmit={handleSubmit}>
-//         <label>Blog title:</label>
-//         <input
-//           type="text"
-//           required
-//           value={title}
-//           onChange={(e) => setTitle(e.target.value)}
-//         />
-//         <label>Blog body:</label>
-//         <textarea
-//           required
-//           value={body}
-//           onChange={(e) => setBody(e.target.value)}
-//         ></textarea>
-//         <label>Blog author:</label>
-//         <select value={author} onChange={(e) => setAuthor(e.target.value)}>
-//           <option value="steph">steph</option>
-//           <option value="crown">crown</option>
-//         </select>
-
-//         {!isLoading && <button>Add Blog</button>}
-//         {isLoading && <button disabled>Adding Blog...</button>}
-
-//         {/* <p>{title}</p>
-//         <p>{body}</p> */}
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Create;
-
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Create = () => {
+const Create = ({ addBlogToTop }) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("steph");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Handle form submit
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
-    const blog = { title, body, author };
+    const createdAt =
+      new Intl.DateTimeFormat("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }).format(new Date()) +
+      " " +
+      new Date().toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      });
 
-    setIsLoading(true); // Set loading to true to disable button and show "Adding Blog..."
+    // console.log(createdAt);
+
+    const blog = {
+      title,
+      body,
+      author,
+
+      id: Date.now(), // Use a unique identifier based on the current timestamp
+      // createdAt: new Date().toISOString() // Current date and time in ISO format
+      // createdAt: new Date().toISOString(),
+      // createdAt: new Date().toLocaleString("en-US", {
+      //   weekday: "long", // "Monday"
+      //   year: "numeric", // "2024"
+      //   month: "long", // "November"
+      //   day: "numeric", // "10"
+      //   hour: "2", // "2"
+      //   minute: "2", // "02"
+      //   second: "55", // "55"
+      //   hour12: true, // Use 12-hour format with AM/PM
+      // }),
+      createdAt,
+    };
+
+    setIsLoading(true);
 
     try {
-      // Send POST request
+      // Make POST request to add a new blog
       const response = await axios.post(
-        "https://tar-majestic-gravity.glitch.me/blogs",
+        "https://yellow-tabby-puppy.glitch.me/blogs",
         blog
       );
-      console.log("Blog added:", response.data);
 
-      // Clear form fields after successful submission
+      // Ensure response contains the added blog data
+      if (response && response.data) {
+        addBlogToTop(response.data); // Add the new blog to the top
+      }
+
+      // Clear form fields
       setTitle("");
       setBody("");
       setAuthor("steph");
+
+      // Redirect to the homepage
+      navigate("/");
     } catch (error) {
-      console.error("There was an error adding the blog!", error);
+      console.error("Error adding the blog!", error);
     } finally {
-      setIsLoading(false); // Reset the loading state after success or error
+      setIsLoading(false);
     }
   };
 
@@ -120,13 +100,8 @@ const Create = () => {
           <option value="steph">steph</option>
           <option value="crown">crown</option>
         </select>
-
-        {/* {!isLoading && <button>Add Blog</button>}
-        {isLoading && <button disabled>Adding Blog...</button>} */}
-        {/* Show the button with dynamic text depending on loading state */}
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Adding Blog..." : "Add Blog"}
-        </button>
+        {!isLoading && <button>Add Blog</button>}
+        {isLoading && <button disabled>Adding Blog...</button>}
       </form>
     </div>
   );

@@ -8,7 +8,7 @@ const BlogDetails = () => {
     data: blog,
     // error,
     isLoading,
-  } = useFetch("https://tar-majestic-gravity.glitch.me/blogs/" + id);
+  } = useFetch("https://yellow-tabby-puppy.glitch.me/blogs/" + id);
   return (
     <div className="blog-details">
       {/* {<h2>Blog Details - {id} </h2>} */}
