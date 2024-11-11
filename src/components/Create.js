@@ -34,19 +34,7 @@ const Create = ({ addBlogToTop }) => {
       body,
       author,
 
-      id: Date.now(), // Use a unique identifier based on the current timestamp
-      // createdAt: new Date().toISOString() // Current date and time in ISO format
-      // createdAt: new Date().toISOString(),
-      // createdAt: new Date().toLocaleString("en-US", {
-      //   weekday: "long", // "Monday"
-      //   year: "numeric", // "2024"
-      //   month: "long", // "November"
-      //   day: "numeric", // "10"
-      //   hour: "2", // "2"
-      //   minute: "2", // "02"
-      //   second: "55", // "55"
-      //   hour12: true, // Use 12-hour format with AM/PM
-      // }),
+      id: Date.now(),
       createdAt,
     };
 

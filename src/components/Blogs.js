@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-// import { Link } from "react-router-dom"; // For navigation
-import useFetch from "../customHook/useFetch"; // Custom hook to fetch data
-import { BlogList } from "./BlogList"; // Component to display the list of blogs
 
+import useFetch from "../customHook/useFetch";
+import { BlogList } from "./BlogList";
 const Blogs = ({ blogs = [], setBlogs }) => {
   const [fetchedBlogs, setFetchedBlogs] = useState([]);
 

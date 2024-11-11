@@ -6,7 +6,7 @@ const Footer = () => {
       <p className="footer-text">
         © {new Date().getFullYear()} Stephanie Udemezue |{" "}
         <a
-          href="https://github.com/yourgithub"
+          href="https://github.com/Stephy-Crown"
           target="_blank"
           rel="noopener noreferrer"
           className="footer-link"

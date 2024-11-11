@@ -9,7 +9,7 @@ export const BlogList = ({ blogs, title }) => {
         <div className="blog-preview" key={blog.id}>
           <Link to={`/blogs/${blog.id}`}>
             <h2>{blog.title}</h2>
-            <p>Written by {blog.author}</p>
+            <p>Written by <span className="blog-author">{blog.author}</span></p>
             <p>
               <small>
                 Created on:{" "}
@@ -22,11 +22,26 @@ export const BlogList = ({ blogs, title }) => {
                 {new Date(blog.createdAt).toLocaleTimeString("en-US", {
                   hour: "2-digit", // Two-digit hour
                   minute: "2-digit", // Two-digit minute
-                  second: "2-digit", // Two-digit second
+                  // second: "2-digit", // Two-digit second
                   hour12: true, // Use 12-hour clock with AM/PM
                 })}
               </small>
             </p>
+          </Link>
+          <Link to={`/blogs/${blog.id}`}>
+            <button
+              style={{
+                backgroundColor: "#4c51bf", // Blue background
+                color: "white", // White text
+                border: "none", // Remove border
+                padding: "7px 15px", // Padding
+                borderRadius: "5px", // Rounded corners
+                cursor: "pointer", // Pointer cursor on hover
+                transition: "background-color 0.3s", // Smooth hover effect
+              }}
+            >
+              View Blog
+            </button>
           </Link>
         </div>
       ))}

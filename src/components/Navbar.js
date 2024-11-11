@@ -11,6 +11,7 @@ const Navbar = () => {
           // Inline styling
           style={{
             color: "white",
+            //  #f1356d
             backgroundColor: "#f1356d",
             borderRadius: "8px",
           }}
